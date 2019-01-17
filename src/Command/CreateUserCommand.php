@@ -39,7 +39,7 @@ class CreateUserCommand extends Command
         $login = $mail;
 
         if ($input->getOption('password')) {
-            $login = $input->getOption('username')
+            $login = $input->getOption('username');
         }
 
         // redmine config
