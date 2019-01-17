@@ -22,6 +22,7 @@ class CreateUserCommand extends Command
             ->addOption('lastname', 'l', InputOption::VALUE_REQUIRED)
             ->addOption('mail', 'm', InputOption::VALUE_REQUIRED)
             ->addOption('password', 'p', InputOption::VALUE_REQUIRED)
+            ->addOption('username', 'u', InputOption::VALUE_REQUIRED)
         ;
     }
 
@@ -34,7 +35,12 @@ class CreateUserCommand extends Command
         $lastname = $input->getOption('lastname');
         $mail = $input->getOption('mail');
         $password = $input->getOption('password');
+
         $login = $mail;
+
+        if ($input->getOption('password')) {
+            $login = $input->getOption('username')
+        }
 
         // redmine config
         $baseUrl = $input->getOption('baseUrl');
